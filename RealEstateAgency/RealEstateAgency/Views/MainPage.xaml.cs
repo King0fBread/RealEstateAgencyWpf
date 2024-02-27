@@ -23,51 +23,52 @@ namespace RealEstateAgency.Views
         public MainPage()
         {
             InitializeComponent();
+            Manager.InternalAppFrame = InternalAppFrame;
+            Manager.InternalAppFrame.JournalOwnership = JournalOwnership.OwnsJournal;
+            Manager.InternalAppFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            Manager.InternalAppFrame.Navigate(new Developers());
         }
 
         private void clientsBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.InternalAppFrame.Navigate(new Clients());
         }
 
         private void requestBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.InternalAppFrame.Navigate(new Requests());
         }
 
         private void flatBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.InternalAppFrame.Navigate(new Flats());
         }
 
         private void skyScrBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.InternalAppFrame.Navigate(new SkyScrapers());
         }
 
         private void devBTN_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.InternalAppFrame.Navigate(new Developers());
         }
 
         private void diagBTN_Click(object sender, RoutedEventArgs e)
         {
-
-        }
-
-        private void flatSearchBTN_Click(object sender, RoutedEventArgs e)
-        {
-
+            Manager.InternalAppFrame.Navigate(new Diagrams());
         }
 
         private void changeAccount_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.Frame.Navigate(new AuthPage());
+            Manager.Frame.RemoveBackEntry();
         }
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {
-
+            Manager.InternalAppFrame.Navigate(new Developers());
         }
+
     }
 }

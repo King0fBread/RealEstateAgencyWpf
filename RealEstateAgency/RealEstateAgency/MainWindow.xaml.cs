@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RealEstateAgency.Views;
+using RealEstateAgency.Models;
 
 namespace RealEstateAgency
 {
@@ -23,6 +25,10 @@ namespace RealEstateAgency
         public MainWindow()
         {
             InitializeComponent();
+            Manager.Frame = mainFrame;
+            Manager.Frame.Navigate(new AuthPage());
+            Manager.Frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            MessageBox.Show(Model.GetContext().SkyScrapers.ToList().Count.ToString());
         }
     }
 }

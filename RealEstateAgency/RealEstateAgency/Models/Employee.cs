@@ -11,6 +11,7 @@ namespace RealEstateAgency.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     
     public partial class Employee
     {
@@ -35,5 +36,18 @@ namespace RealEstateAgency.Models
         public virtual ICollection<Request> Requests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Client> Clients { get; set; }
+
+        public static Employee Login(string login, string password)
+        {
+            try
+            {
+                var user = Model.GetContext().Employees.FirstOrDefault(v => v.login == login && v.password == v.password && v.IdRole == 2);
+                return user;
+            }
+            catch (Exception)
+            {
+            }
+            return null;
+        }
     }
 }

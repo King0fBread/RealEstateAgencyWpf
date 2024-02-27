@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using RealEstateAgency.Models;
 
 namespace RealEstateAgency.Views
 {
@@ -23,6 +24,24 @@ namespace RealEstateAgency.Views
         public Developers()
         {
             InitializeComponent();
+            developersDG.ItemsSource = Developers.GetAll();
+        }
+
+        private void edit_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+        public static List<Developer> GetAll()
+        {
+            try
+            {
+                return Model.GetContext().Developers.ToList();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
         }
     }
 }
