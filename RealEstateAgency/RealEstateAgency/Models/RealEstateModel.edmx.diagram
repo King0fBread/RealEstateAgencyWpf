@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ef8779e6a8db4c3bb89a53cc6425a3f3" Name="Diagram1">
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Client" Width="1.5" PointX="0.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Developer" Width="1.5" PointX="1.5" PointY="15.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.District" Width="1.5" PointX="3" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Employee" Width="1.5" PointX="3" PointY="3.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Flat" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Material" Width="1.5" PointX="1.5" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Request" Width="1.5" PointX="5.25" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.RequestStatu" Width="1.5" PointX="3" PointY="20.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.Role" Width="1.5" PointX="0.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RealEstateAgencyModel.SkyScraper" Width="1.5" PointX="0.75" PointY="10.625" IsExpanded="true" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__Request__IdClien__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__SkyScrape__IdDev__5629CD9C" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__Request__IdDistr__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__SkyScrape__IdDis__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__Employee__IdRole__4E88ABD4" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__Request__IdEmplo__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__Flat__IdSkyscrap__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__SkyScrape__IdMat__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.FK__Request__IdReque__49C3F6B7" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.ClientEmployee" ManuallyRouted="false" />
+        <AssociationConnector Association="RealEstateAgencyModel.RequestFlat" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

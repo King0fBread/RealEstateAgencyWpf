@@ -1,0 +1,822 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="RealEstateAgencyModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="Comment" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="ClientEmployee">
+          <Key>
+            <PropertyRef Name="IdClient" />
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="IdDeveloper" />
+          </Key>
+          <Property Name="IdDeveloper" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="IdDistrict" />
+          </Key>
+          <Property Name="IdDistrict" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Patronymic" Type="nvarchar" MaxLength="20" />
+          <Property Name="Phone" Type="nvarchar" MaxLength="11" Nullable="false" />
+          <Property Name="login" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="password" Type="nvarchar" MaxLength="40" Nullable="false" />
+          <Property Name="IdRole" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Flat">
+          <Key>
+            <PropertyRef Name="IdFlat" />
+          </Key>
+          <Property Name="IdFlat" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="BuildingNumberOfRoom" Type="int" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="NumberOfRooms" Type="int" Nullable="false" />
+          <Property Name="Area" Type="int" Nullable="false" />
+          <Property Name="FloorNumber" Type="int" Nullable="false" />
+          <Property Name="EntranceNumber" Type="int" Nullable="false" />
+          <Property Name="IdSkyscraper" Type="int" Nullable="false" />
+          <Property Name="ImagePreview" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Materials">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+          </Key>
+          <Property Name="IdMaterial" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="IdRequest" />
+          </Key>
+          <Property Name="IdRequest" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MinimumPrice" Type="money" />
+          <Property Name="MaximumPrice" Type="money" Nullable="false" />
+          <Property Name="NumberOfRooms" Type="int" Nullable="false" />
+          <Property Name="MinimumArea" Type="int" Nullable="false" />
+          <Property Name="MaximumArea" Type="int" />
+          <Property Name="RequestDate" Type="datetime" Nullable="false" />
+          <Property Name="IdDistrict" Type="int" Nullable="false" />
+          <Property Name="IdEmployee" Type="int" Nullable="false" />
+          <Property Name="IdClient" Type="int" Nullable="false" />
+          <Property Name="IdRequestStatus" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'RealEstateAgency.dbo.RequestFlat' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="RequestFlat">
+          <Key>
+            <PropertyRef Name="IdRequest" />
+            <PropertyRef Name="IdFlat" />
+          </Key>
+          <Property Name="IdRequest" Type="int" Nullable="false" />
+          <Property Name="IdFlat" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="RequestStatus">
+          <Key>
+            <PropertyRef Name="IdRequestStatus" />
+          </Key>
+          <Property Name="IdRequestStatus" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="15" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="SkyScraper">
+          <Key>
+            <PropertyRef Name="IdSkyscraper" />
+          </Key>
+          <Property Name="IdSkyscraper" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="Address" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NumberOfFloors" Type="int" Nullable="false" />
+          <Property Name="NumberOfEntrances" Type="int" Nullable="false" />
+          <Property Name="NumberOfApartments" Type="int" Nullable="false" />
+          <Property Name="IdDistrict" Type="int" Nullable="false" />
+          <Property Name="IdMaterial" Type="int" Nullable="false" />
+          <Property Name="IdDeveloper" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__ClientEmp__IdCli__4CA06362">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="ClientEmployee" Type="Self.ClientEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="ClientEmployee">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__ClientEmp__IdEmp__4D94879B">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="ClientEmployee" Type="Self.ClientEmployee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="ClientEmployee">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__IdRole__4E88ABD4">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flat__IdSkyscrap__4F7CD00D">
+          <End Role="SkyScraper" Type="Self.SkyScraper" Multiplicity="1" />
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkyScraper">
+              <PropertyRef Name="IdSkyscraper" />
+            </Principal>
+            <Dependent Role="Flat">
+              <PropertyRef Name="IdSkyscraper" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__IdClien__48CFD27E">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__IdDistr__46E78A0C">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="IdDistrict" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__IdEmplo__47DBAE45">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__IdReque__49C3F6B7">
+          <End Role="RequestStatus" Type="Self.RequestStatus" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStatus">
+              <PropertyRef Name="IdRequestStatus" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdRequestStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RequestFl__IdFla__5441852A">
+          <End Role="Flat" Type="Self.Flat" Multiplicity="1" />
+          <End Role="RequestFlat" Type="Self.RequestFlat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Flat">
+              <PropertyRef Name="IdFlat" />
+            </Principal>
+            <Dependent Role="RequestFlat">
+              <PropertyRef Name="IdFlat" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__RequestFl__IdReq__571DF1D5">
+          <End Role="Request" Type="Self.Request" Multiplicity="1" />
+          <End Role="RequestFlat" Type="Self.RequestFlat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Request">
+              <PropertyRef Name="IdRequest" />
+            </Principal>
+            <Dependent Role="RequestFlat">
+              <PropertyRef Name="IdRequest" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SkyScrape__IdDev__5629CD9C">
+          <End Role="Developer" Type="Self.Developer" Multiplicity="1" />
+          <End Role="SkyScraper" Type="Self.SkyScraper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="IdDeveloper" />
+            </Principal>
+            <Dependent Role="SkyScraper">
+              <PropertyRef Name="IdDeveloper" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SkyScrape__IdDis__571DF1D5">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="SkyScraper" Type="Self.SkyScraper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="IdDistrict" />
+            </Principal>
+            <Dependent Role="SkyScraper">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SkyScrape__IdMat__5812160E">
+          <End Role="Materials" Type="Self.Materials" Multiplicity="1" />
+          <End Role="SkyScraper" Type="Self.SkyScraper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="IdMaterial" />
+            </Principal>
+            <Dependent Role="SkyScraper">
+              <PropertyRef Name="IdMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="RealEstateAgencyModelStoreContainer">
+          <EntitySet Name="Client" EntityType="Self.Client" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClientEmployee" EntityType="Self.ClientEmployee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Developer" EntityType="Self.Developer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Flat" EntityType="Self.Flat" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Materials" EntityType="Self.Materials" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Request" EntityType="Self.Request" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestStatus" EntityType="Self.RequestStatus" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Role" EntityType="Self.Role" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SkyScraper" EntityType="Self.SkyScraper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="RequestFlat" EntityType="Self.RequestFlat" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [RequestFlat].[IdRequest] AS [IdRequest], 
+    [RequestFlat].[IdFlat] AS [IdFlat]
+    FROM [dbo].[RequestFlat] AS [RequestFlat]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__ClientEmp__IdCli__4CA06362" Association="Self.FK__ClientEmp__IdCli__4CA06362">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="ClientEmployee" EntitySet="ClientEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__ClientEmp__IdEmp__4D94879B" Association="Self.FK__ClientEmp__IdEmp__4D94879B">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="ClientEmployee" EntitySet="ClientEmployee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__IdRole__4E88ABD4" Association="Self.FK__Employee__IdRole__4E88ABD4">
+            <End Role="Role" EntitySet="Role" />
+            <End Role="Employee" EntitySet="Employee" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flat__IdSkyscrap__4F7CD00D" Association="Self.FK__Flat__IdSkyscrap__4F7CD00D">
+            <End Role="SkyScraper" EntitySet="SkyScraper" />
+            <End Role="Flat" EntitySet="Flat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__IdClien__48CFD27E" Association="Self.FK__Request__IdClien__48CFD27E">
+            <End Role="Client" EntitySet="Client" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__IdDistr__46E78A0C" Association="Self.FK__Request__IdDistr__46E78A0C">
+            <End Role="District" EntitySet="District" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__IdEmplo__47DBAE45" Association="Self.FK__Request__IdEmplo__47DBAE45">
+            <End Role="Employee" EntitySet="Employee" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__IdReque__49C3F6B7" Association="Self.FK__Request__IdReque__49C3F6B7">
+            <End Role="RequestStatus" EntitySet="RequestStatus" />
+            <End Role="Request" EntitySet="Request" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RequestFl__IdFla__5441852A" Association="Self.FK__RequestFl__IdFla__5441852A">
+            <End Role="Flat" EntitySet="Flat" />
+            <End Role="RequestFlat" EntitySet="RequestFlat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__RequestFl__IdReq__571DF1D5" Association="Self.FK__RequestFl__IdReq__571DF1D5">
+            <End Role="Request" EntitySet="Request" />
+            <End Role="RequestFlat" EntitySet="RequestFlat" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SkyScrape__IdDev__5629CD9C" Association="Self.FK__SkyScrape__IdDev__5629CD9C">
+            <End Role="Developer" EntitySet="Developer" />
+            <End Role="SkyScraper" EntitySet="SkyScraper" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SkyScrape__IdDis__571DF1D5" Association="Self.FK__SkyScrape__IdDis__571DF1D5">
+            <End Role="District" EntitySet="District" />
+            <End Role="SkyScraper" EntitySet="SkyScraper" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SkyScrape__IdMat__5812160E" Association="Self.FK__SkyScrape__IdMat__5812160E">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="SkyScraper" EntitySet="SkyScraper" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="RealEstateAgencyModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Client">
+          <Key>
+            <PropertyRef Name="IdClient" />
+          </Key>
+          <Property Name="IdClient" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__IdClien__48CFD27E" FromRole="Client" ToRole="Request" />
+          <NavigationProperty Name="Employees" Relationship="Self.ClientEmployee" FromRole="Client" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="IdDeveloper" />
+          </Key>
+          <Property Name="IdDeveloper" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SkyScrapers" Relationship="Self.FK__SkyScrape__IdDev__5629CD9C" FromRole="Developer" ToRole="SkyScraper" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="IdDistrict" />
+          </Key>
+          <Property Name="IdDistrict" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__IdDistr__46E78A0C" FromRole="District" ToRole="Request" />
+          <NavigationProperty Name="SkyScrapers" Relationship="Self.FK__SkyScrape__IdDis__571DF1D5" FromRole="District" ToRole="SkyScraper" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="IdEmployee" />
+          </Key>
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Patronymic" Type="String" MaxLength="20" FixedLength="false" Unicode="true" />
+          <Property Name="Phone" Type="String" MaxLength="11" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="login" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="password" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IdRole" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Role" Relationship="Self.FK__Employee__IdRole__4E88ABD4" FromRole="Employee" ToRole="Role" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__IdEmplo__47DBAE45" FromRole="Employee" ToRole="Request" />
+          <NavigationProperty Name="Clients" Relationship="Self.ClientEmployee" FromRole="Employee" ToRole="Client" />
+        </EntityType>
+        <EntityType Name="Flat">
+          <Key>
+            <PropertyRef Name="IdFlat" />
+          </Key>
+          <Property Name="IdFlat" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="BuildingNumberOfRoom" Type="Int32" Nullable="false" />
+          <Property Name="Price" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="NumberOfRooms" Type="Int32" Nullable="false" />
+          <Property Name="Area" Type="Int32" Nullable="false" />
+          <Property Name="FloorNumber" Type="Int32" Nullable="false" />
+          <Property Name="EntranceNumber" Type="Int32" Nullable="false" />
+          <Property Name="IdSkyscraper" Type="Int32" Nullable="false" />
+          <Property Name="ImagePreview" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="SkyScraper" Relationship="Self.FK__Flat__IdSkyscrap__4F7CD00D" FromRole="Flat" ToRole="SkyScraper" />
+          <NavigationProperty Name="Requests" Relationship="Self.RequestFlat" FromRole="Flat" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="Material">
+          <Key>
+            <PropertyRef Name="IdMaterial" />
+          </Key>
+          <Property Name="IdMaterial" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="SkyScrapers" Relationship="Self.FK__SkyScrape__IdMat__5812160E" FromRole="Materials" ToRole="SkyScraper" />
+        </EntityType>
+        <EntityType Name="Request">
+          <Key>
+            <PropertyRef Name="IdRequest" />
+          </Key>
+          <Property Name="IdRequest" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MinimumPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MaximumPrice" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="NumberOfRooms" Type="Int32" Nullable="false" />
+          <Property Name="MinimumArea" Type="Int32" Nullable="false" />
+          <Property Name="MaximumArea" Type="Int32" />
+          <Property Name="RequestDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="IdDistrict" Type="Int32" Nullable="false" />
+          <Property Name="IdEmployee" Type="Int32" Nullable="false" />
+          <Property Name="IdClient" Type="Int32" Nullable="false" />
+          <Property Name="IdRequestStatus" Type="Int32" />
+          <NavigationProperty Name="Client" Relationship="Self.FK__Request__IdClien__48CFD27E" FromRole="Request" ToRole="Client" />
+          <NavigationProperty Name="District" Relationship="Self.FK__Request__IdDistr__46E78A0C" FromRole="Request" ToRole="District" />
+          <NavigationProperty Name="Employee" Relationship="Self.FK__Request__IdEmplo__47DBAE45" FromRole="Request" ToRole="Employee" />
+          <NavigationProperty Name="RequestStatu" Relationship="Self.FK__Request__IdReque__49C3F6B7" FromRole="Request" ToRole="RequestStatus" />
+          <NavigationProperty Name="Flats" Relationship="Self.RequestFlat" FromRole="Request" ToRole="Flat" />
+        </EntityType>
+        <EntityType Name="RequestStatu">
+          <Key>
+            <PropertyRef Name="IdRequestStatus" />
+          </Key>
+          <Property Name="IdRequestStatus" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Status" Type="String" MaxLength="15" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Requests" Relationship="Self.FK__Request__IdReque__49C3F6B7" FromRole="RequestStatus" ToRole="Request" />
+        </EntityType>
+        <EntityType Name="Role">
+          <Key>
+            <PropertyRef Name="IdRole" />
+          </Key>
+          <Property Name="IdRole" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Employees" Relationship="Self.FK__Employee__IdRole__4E88ABD4" FromRole="Role" ToRole="Employee" />
+        </EntityType>
+        <EntityType Name="SkyScraper">
+          <Key>
+            <PropertyRef Name="IdSkyscraper" />
+          </Key>
+          <Property Name="IdSkyscraper" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NumberOfFloors" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfEntrances" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfApartments" Type="Int32" Nullable="false" />
+          <Property Name="IdDistrict" Type="Int32" Nullable="false" />
+          <Property Name="IdMaterial" Type="Int32" Nullable="false" />
+          <Property Name="IdDeveloper" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Developer" Relationship="Self.FK__SkyScrape__IdDev__5629CD9C" FromRole="SkyScraper" ToRole="Developer" />
+          <NavigationProperty Name="District" Relationship="Self.FK__SkyScrape__IdDis__571DF1D5" FromRole="SkyScraper" ToRole="District" />
+          <NavigationProperty Name="Flats" Relationship="Self.FK__Flat__IdSkyscrap__4F7CD00D" FromRole="SkyScraper" ToRole="Flat" />
+          <NavigationProperty Name="Material" Relationship="Self.FK__SkyScrape__IdMat__5812160E" FromRole="SkyScraper" ToRole="Materials" />
+        </EntityType>
+        <Association Name="FK__Request__IdClien__48CFD27E">
+          <End Role="Client" Type="Self.Client" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Client">
+              <PropertyRef Name="IdClient" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdClient" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SkyScrape__IdDev__5629CD9C">
+          <End Role="Developer" Type="Self.Developer" Multiplicity="1" />
+          <End Role="SkyScraper" Type="Self.SkyScraper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="IdDeveloper" />
+            </Principal>
+            <Dependent Role="SkyScraper">
+              <PropertyRef Name="IdDeveloper" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__IdDistr__46E78A0C">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="IdDistrict" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SkyScrape__IdDis__571DF1D5">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="SkyScraper" Type="Self.SkyScraper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="IdDistrict" />
+            </Principal>
+            <Dependent Role="SkyScraper">
+              <PropertyRef Name="IdDistrict" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Employee__IdRole__4E88ABD4">
+          <End Role="Role" Type="Self.Role" Multiplicity="1" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Role">
+              <PropertyRef Name="IdRole" />
+            </Principal>
+            <Dependent Role="Employee">
+              <PropertyRef Name="IdRole" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__IdEmplo__47DBAE45">
+          <End Role="Employee" Type="Self.Employee" Multiplicity="1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Employee">
+              <PropertyRef Name="IdEmployee" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdEmployee" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Flat__IdSkyscrap__4F7CD00D">
+          <End Role="SkyScraper" Type="Self.SkyScraper" Multiplicity="1" />
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SkyScraper">
+              <PropertyRef Name="IdSkyscraper" />
+            </Principal>
+            <Dependent Role="Flat">
+              <PropertyRef Name="IdSkyscraper" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SkyScrape__IdMat__5812160E">
+          <End Role="Materials" Type="Self.Material" Multiplicity="1" />
+          <End Role="SkyScraper" Type="Self.SkyScraper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Materials">
+              <PropertyRef Name="IdMaterial" />
+            </Principal>
+            <Dependent Role="SkyScraper">
+              <PropertyRef Name="IdMaterial" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Request__IdReque__49C3F6B7">
+          <End Role="RequestStatus" Type="Self.RequestStatu" Multiplicity="0..1" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="RequestStatus">
+              <PropertyRef Name="IdRequestStatus" />
+            </Principal>
+            <Dependent Role="Request">
+              <PropertyRef Name="IdRequestStatus" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ClientEmployee">
+          <End Role="Client" Type="Self.Client" Multiplicity="*" />
+          <End Role="Employee" Type="Self.Employee" Multiplicity="*" />
+        </Association>
+        <Association Name="RequestFlat">
+          <End Role="Flat" Type="Self.Flat" Multiplicity="*" />
+          <End Role="Request" Type="Self.Request" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="RealEstateAgencyEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Clients" EntityType="Self.Client" />
+          <EntitySet Name="Developers" EntityType="Self.Developer" />
+          <EntitySet Name="Districts" EntityType="Self.District" />
+          <EntitySet Name="Employees" EntityType="Self.Employee" />
+          <EntitySet Name="Flats" EntityType="Self.Flat" />
+          <EntitySet Name="Materials" EntityType="Self.Material" />
+          <EntitySet Name="Requests" EntityType="Self.Request" />
+          <EntitySet Name="RequestStatus" EntityType="Self.RequestStatu" />
+          <EntitySet Name="Roles" EntityType="Self.Role" />
+          <EntitySet Name="SkyScrapers" EntityType="Self.SkyScraper" />
+          <AssociationSet Name="FK__Request__IdClien__48CFD27E" Association="Self.FK__Request__IdClien__48CFD27E">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SkyScrape__IdDev__5629CD9C" Association="Self.FK__SkyScrape__IdDev__5629CD9C">
+            <End Role="Developer" EntitySet="Developers" />
+            <End Role="SkyScraper" EntitySet="SkyScrapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__IdDistr__46E78A0C" Association="Self.FK__Request__IdDistr__46E78A0C">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SkyScrape__IdDis__571DF1D5" Association="Self.FK__SkyScrape__IdDis__571DF1D5">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="SkyScraper" EntitySet="SkyScrapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Employee__IdRole__4E88ABD4" Association="Self.FK__Employee__IdRole__4E88ABD4">
+            <End Role="Role" EntitySet="Roles" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__IdEmplo__47DBAE45" Association="Self.FK__Request__IdEmplo__47DBAE45">
+            <End Role="Employee" EntitySet="Employees" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Flat__IdSkyscrap__4F7CD00D" Association="Self.FK__Flat__IdSkyscrap__4F7CD00D">
+            <End Role="SkyScraper" EntitySet="SkyScrapers" />
+            <End Role="Flat" EntitySet="Flats" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SkyScrape__IdMat__5812160E" Association="Self.FK__SkyScrape__IdMat__5812160E">
+            <End Role="Materials" EntitySet="Materials" />
+            <End Role="SkyScraper" EntitySet="SkyScrapers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Request__IdReque__49C3F6B7" Association="Self.FK__Request__IdReque__49C3F6B7">
+            <End Role="RequestStatus" EntitySet="RequestStatus" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+          <AssociationSet Name="ClientEmployee" Association="Self.ClientEmployee">
+            <End Role="Client" EntitySet="Clients" />
+            <End Role="Employee" EntitySet="Employees" />
+          </AssociationSet>
+          <AssociationSet Name="RequestFlat" Association="Self.RequestFlat">
+            <End Role="Flat" EntitySet="Flats" />
+            <End Role="Request" EntitySet="Requests" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="RealEstateAgencyModelStoreContainer" CdmEntityContainer="RealEstateAgencyEntities">
+          <EntitySetMapping Name="Clients">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.Client">
+              <MappingFragment StoreEntitySet="Client">
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Comment" ColumnName="Comment" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developers">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.Developer">
+              <MappingFragment StoreEntitySet="Developer">
+                <ScalarProperty Name="IdDeveloper" ColumnName="IdDeveloper" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="IdDistrict" ColumnName="IdDistrict" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employees">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Patronymic" ColumnName="Patronymic" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="login" ColumnName="login" />
+                <ScalarProperty Name="password" ColumnName="password" />
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Flats">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.Flat">
+              <MappingFragment StoreEntitySet="Flat">
+                <ScalarProperty Name="IdFlat" ColumnName="IdFlat" />
+                <ScalarProperty Name="BuildingNumberOfRoom" ColumnName="BuildingNumberOfRoom" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="NumberOfRooms" ColumnName="NumberOfRooms" />
+                <ScalarProperty Name="Area" ColumnName="Area" />
+                <ScalarProperty Name="FloorNumber" ColumnName="FloorNumber" />
+                <ScalarProperty Name="EntranceNumber" ColumnName="EntranceNumber" />
+                <ScalarProperty Name="IdSkyscraper" ColumnName="IdSkyscraper" />
+                <ScalarProperty Name="ImagePreview" ColumnName="ImagePreview" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Materials">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.Material">
+              <MappingFragment StoreEntitySet="Materials">
+                <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Requests">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.Request">
+              <MappingFragment StoreEntitySet="Request">
+                <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
+                <ScalarProperty Name="MinimumPrice" ColumnName="MinimumPrice" />
+                <ScalarProperty Name="MaximumPrice" ColumnName="MaximumPrice" />
+                <ScalarProperty Name="NumberOfRooms" ColumnName="NumberOfRooms" />
+                <ScalarProperty Name="MinimumArea" ColumnName="MinimumArea" />
+                <ScalarProperty Name="MaximumArea" ColumnName="MaximumArea" />
+                <ScalarProperty Name="RequestDate" ColumnName="RequestDate" />
+                <ScalarProperty Name="IdDistrict" ColumnName="IdDistrict" />
+                <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+                <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+                <ScalarProperty Name="IdRequestStatus" ColumnName="IdRequestStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="RequestStatus">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.RequestStatu">
+              <MappingFragment StoreEntitySet="RequestStatus">
+                <ScalarProperty Name="IdRequestStatus" ColumnName="IdRequestStatus" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Roles">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.Role">
+              <MappingFragment StoreEntitySet="Role">
+                <ScalarProperty Name="IdRole" ColumnName="IdRole" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SkyScrapers">
+            <EntityTypeMapping TypeName="RealEstateAgencyModel.SkyScraper">
+              <MappingFragment StoreEntitySet="SkyScraper">
+                <ScalarProperty Name="IdSkyscraper" ColumnName="IdSkyscraper" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Address" ColumnName="Address" />
+                <ScalarProperty Name="NumberOfFloors" ColumnName="NumberOfFloors" />
+                <ScalarProperty Name="NumberOfEntrances" ColumnName="NumberOfEntrances" />
+                <ScalarProperty Name="NumberOfApartments" ColumnName="NumberOfApartments" />
+                <ScalarProperty Name="IdDistrict" ColumnName="IdDistrict" />
+                <ScalarProperty Name="IdMaterial" ColumnName="IdMaterial" />
+                <ScalarProperty Name="IdDeveloper" ColumnName="IdDeveloper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="ClientEmployee" TypeName="RealEstateAgencyModel.ClientEmployee" StoreEntitySet="ClientEmployee">
+            <EndProperty Name="Client">
+              <ScalarProperty Name="IdClient" ColumnName="IdClient" />
+            </EndProperty>
+            <EndProperty Name="Employee">
+              <ScalarProperty Name="IdEmployee" ColumnName="IdEmployee" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="RequestFlat" TypeName="RealEstateAgencyModel.RequestFlat" StoreEntitySet="RequestFlat">
+            <EndProperty Name="Flat">
+              <ScalarProperty Name="IdFlat" ColumnName="IdFlat" />
+            </EndProperty>
+            <EndProperty Name="Request">
+              <ScalarProperty Name="IdRequest" ColumnName="IdRequest" />
+            </EndProperty>
+          </AssociationSetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
