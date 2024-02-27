@@ -9,6 +9,22 @@
       Title="MainPage">
 
     <Grid>
-        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="3*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <StackPanel Orientation="Vertical">
+            <TextBlock HorizontalAlignment="Center" Margin="0 20 0 0" FontSize="25">Меню:</TextBlock>
+            <Button x:Name="clientsBTN" Click="clientsBTN_Click" Content="Клиенты" Margin="0 10 0 0" Height="24" Width="100" BorderBrush="Black" Background="#FF2286FE" Foreground="White"/>
+            <Button x:Name="requestBTN" Click="requestBTN_Click" Content="Заявки" Margin="0 10 0 0"  Height="24" Width="100" BorderBrush="Black" Background="#FF2286FE" Foreground="White"/>
+            <Button x:Name="flatBTN" Click="flatBTN_Click" Content="Квартиры" Margin="0 10 0 0"  Height="24" Width="100" BorderBrush="Black" Background="#FF2286FE" Foreground="White"/>
+            <Button x:Name="skyScrBTN" Click="skyScrBTN_Click" Content="Высотные дома" Margin="0 10 0 0"  Height="24" Width="100" BorderBrush="Black" Background="#FF2286FE" Foreground="White"/>
+            <Button x:Name="devBTN" Click="devBTN_Click" Content="Застройщики" Margin="0 10 0 0"  Height="24" Width="100" BorderBrush="Black" Background="#FF2286FE" Foreground="White"/>
+            <Button x:Name="diagBTN" Click="diagBTN_Click" Content="Диаграмма" Margin="0,10,0,0"  Height="24" Width="100"  BorderBrush="Black" Background="#FF2286FE" Foreground="White"/>
+            <Button x:Name="flatSearchBTN" Content="Подбор квартиры"  Margin="0 10 0 0" Width="100"  Height="24"  BorderBrush="Black" Background="#FF2286FE" Foreground="White" Click="flatSearchBTN_Click"/>
+            <Button x:Name="changeAccount" Click="changeAccount_Click" Content="Сменить аккаунт"  Margin="0 10 0 0" Width="100"  Height="24"  BorderBrush="Black" Background="#FF2286FE" Foreground="White"/>
+            <Button x:Name="logout" Click="logout_Click" Content="Выйти" Height="24"  Margin="0 10 0 0" Width="100"  BorderBrush="Black" Background="#FF2286FE" Foreground="White"/>
+        </StackPanel>
+        <Frame Grid.Column="1" Name="InternalAppFrame"></Frame>
     </Grid>
 </Page>

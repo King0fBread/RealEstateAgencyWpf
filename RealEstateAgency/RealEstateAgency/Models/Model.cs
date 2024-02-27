@@ -8,5 +8,12 @@ namespace RealEstateAgency.Models
 {
     class Model
     {
+        private static RealEstateAgencyEntities _context;
+        public static RealEstateAgencyEntities GetContext()
+        {
+            if (_context == null)
+                _context = new RealEstateAgencyEntities();
+            return _context;
+        }
     }
 }

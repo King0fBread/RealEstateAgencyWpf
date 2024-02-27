@@ -24,5 +24,50 @@ namespace RealEstateAgency.Views
         {
             InitializeComponent();
         }
+
+        private void clientsBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void requestBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void flatBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void skyScrBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void devBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void diagBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void flatSearchBTN_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void changeAccount_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void logout_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }
