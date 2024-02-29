@@ -67,7 +67,7 @@ namespace RealEstateAgency.Views
 
         private void logout_Click(object sender, RoutedEventArgs e)
         {
-            Manager.InternalAppFrame.Navigate(new Developers());
+            Application.Current.Shutdown();
         }
 
     }

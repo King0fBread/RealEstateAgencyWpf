@@ -11,6 +11,7 @@ namespace RealEstateAgency.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     
     public partial class Client
     {
@@ -32,5 +33,18 @@ namespace RealEstateAgency.Models
         public virtual ICollection<Request> Requests { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Employee> Employees { get; set; }
+
+        public static List<Client> GetAll()
+        {
+            try
+            {
+                return Model.GetContext().Clients.ToList();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+        }
     }
 }

@@ -11,6 +11,7 @@ namespace RealEstateAgency.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     
     public partial class Flat
     {
@@ -33,5 +34,18 @@ namespace RealEstateAgency.Models
         public virtual SkyScraper SkyScraper { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Request> Requests { get; set; }
+
+        public static List<Flat> GetAll()
+        {
+            try
+            {
+                return Model.GetContext().Flats.ToList();
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+
+        }
     }
 }

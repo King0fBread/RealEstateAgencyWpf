@@ -8,7 +8,36 @@
       d:DesignHeight="450" d:DesignWidth="800"
       Title="Flats">
 
-    <Grid>
-        
-    </Grid>
+    <StackPanel>
+
+        <TextBlock HorizontalAlignment="Center" FontSize="20">Управление квартирами</TextBlock>
+        <TextBox Margin="10 0" Height="25"></TextBox>
+        <DataGrid x:Name="flatsDG" Margin="10 10" AutoGenerateColumns="False" CanUserAddRows="False" HorizontalScrollBarVisibility="Hidden" Height="317">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="70" Header="Строительный" Binding="{Binding BuildingNumberOfRoom}"/>
+                <DataGridTextColumn Width="70" Header="Цена (руб)" Binding="{Binding Price}"/>
+                <DataGridTextColumn Width="70" Header="Кол-во комнат" Binding="{Binding NumberOfRooms}"/>
+                <DataGridTextColumn Width="70" Header="Площадь" Binding="{Binding Area}"/>
+                <DataGridTextColumn Width="70" Header="Этаж" Binding="{Binding FloorNumber}"/>
+                <DataGridTextColumn Width="70" Header="Подьезд" Binding="{Binding EntranceNumber}"/>
+                <DataGridTextColumn Width="80" Header="Высотный дом" Binding="{Binding SkyScraper.Name}"/>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding ImagePreview}" Width="80"/>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+                <DataGridTemplateColumn>
+                    <DataGridTemplateColumn.CellTemplate>
+                        <DataTemplate>
+                            <Button Background="Transparent" Name="edit" Width="40" Height="40">
+                                <Image Source="/Resources/pen.png" Width="40"/>
+                            </Button>
+                        </DataTemplate>
+                    </DataGridTemplateColumn.CellTemplate>
+                </DataGridTemplateColumn>
+            </DataGrid.Columns>
+        </DataGrid>
+    </StackPanel>
 </Page>
