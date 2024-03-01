@@ -27,9 +27,11 @@ namespace RealEstateAgency.Views
             developersDG.ItemsSource = Developers.GetAll();
         }
 
-        private void edit_Click(object sender, RoutedEventArgs e)
+        private void EditDeveloper_Click(object sender, RoutedEventArgs e)
         {
-
+            var button = sender as Button;
+            var selectedDeveloper = button.DataContext as Developer;
+            Manager.mainFrame.Navigate(new DeveloperEditPage(selectedDeveloper));
         }
         public static List<Developer> GetAll()
         {

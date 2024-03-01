@@ -25,10 +25,10 @@ namespace RealEstateAgency
         public MainWindow()
         {
             InitializeComponent();
-            Manager.Frame = mainFrame;
-            Manager.Frame.Navigate(new AuthPage());
-            Manager.Frame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
-            MessageBox.Show(Model.GetContext().SkyScrapers.ToList().Count.ToString());
+            Manager.mainFrame = mainFrame;
+            Manager.mainFrame.Navigate(new AuthPage());
+            Manager.mainFrame.NavigationUIVisibility = NavigationUIVisibility.Hidden;
+            Manager.mainFrame.JournalOwnership = JournalOwnership.OwnsJournal;
         }
     }
 }

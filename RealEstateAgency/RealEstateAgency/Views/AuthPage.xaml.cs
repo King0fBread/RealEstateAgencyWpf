@@ -26,7 +26,7 @@ namespace RealEstateAgency.Views
             InitializeComponent();
         }
 
-        private void btnLogin_Click(object sender, RoutedEventArgs e)
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
             var user = Employee.Login(txtLogin.Text, txtPassword.Text);
             if (user == null)
@@ -35,10 +35,10 @@ namespace RealEstateAgency.Views
                 return;
             }
             Manager.currentUser = user;
-            Manager.Frame.Navigate(new MainPage());
+            Manager.mainFrame.Navigate(new MainPage());
         }
 
-        private void imgQuest_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private void ClickableTipImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
             MessageBox.Show("Поля для ввода логина и пароля", "Информация", MessageBoxButton.OK, MessageBoxImage.Information);
         }

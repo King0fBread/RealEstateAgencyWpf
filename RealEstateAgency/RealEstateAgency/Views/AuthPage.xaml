@@ -20,7 +20,7 @@
             <Label Content="Введите логин:" FontSize="14" HorizontalContentAlignment="Center"/>
             <StackPanel Orientation="Horizontal"  HorizontalAlignment="Center" >
                 <TextBox x:Name="txtLogin" FontSize="14" VerticalAlignment="Center" Width="200"/>
-                <Image x:Name="imgQuest" Source="/Resources/quest.png" Height="18" MouseLeftButtonDown="imgQuest_MouseLeftButtonDown" Margin="-20 0 0 0"/>
+                <Image x:Name="imgQuest" Source="/Resources/quest.png" Height="18" MouseLeftButtonDown="ClickableTipImage_MouseLeftButtonDown" Margin="-20 0 0 0"/>
             </StackPanel>
 
             <Label Content="Введите пароль:" FontSize="14" HorizontalContentAlignment="Center"/>
@@ -28,7 +28,7 @@
                 <TextBox x:Name="txtPassword" FontSize="14" VerticalAlignment="Center" Width="200"/>
                 <Image Source="/Resources/eye.png" Height="18" Margin="-20 0 0 0"/>
             </StackPanel>
-            <Button x:Name="btnLogin" Content="Войти" Height="24" HorizontalAlignment="Center" Margin="0,22,0,0" Width="150" BorderBrush="Black" Background="#FF2286FE" Click="btnLogin_Click"/>
+            <Button x:Name="btnLogin" Content="Войти" Height="24" HorizontalAlignment="Center" Margin="0,22,0,0" Width="150" BorderBrush="Black" Background="#FF2286FE" Click="LoginButton_Click"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -26,7 +26,7 @@
                 <DataGridTemplateColumn>
                     <DataGridTemplateColumn.CellTemplate>
                         <DataTemplate>
-                            <Button Background="Transparent" Name="edit" Click="edit_Click" Width="40" Height="40">
+                            <Button Background="Transparent" Name="edit" Click="EditDeveloper_Click" Width="40" Height="40">
                                 <Image Source="/Resources/pen.png" Width="40"/>
                             </Button>
                         </DataTemplate>

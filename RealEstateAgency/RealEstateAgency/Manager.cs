@@ -10,8 +10,9 @@ namespace RealEstateAgency
 {
     class Manager
     {
-        public static Frame Frame;
+        public static Frame mainFrame;
+        public static Frame internalAppFrame;
+
         public static Employee currentUser;
-        public static Frame InternalAppFrame;
     }
 }
