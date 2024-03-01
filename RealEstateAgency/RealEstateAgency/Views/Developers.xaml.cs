@@ -45,5 +45,15 @@ namespace RealEstateAgency.Views
             }
 
         }
+
+        private void AddDeveloper_Click(object sender, RoutedEventArgs e)
+        {
+            Manager.mainFrame.Navigate(new DeveloperAddPage());
+        }
+
+        private void DeleteDeveloper_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

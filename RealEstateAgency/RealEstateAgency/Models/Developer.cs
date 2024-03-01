@@ -19,6 +19,11 @@ namespace RealEstateAgency.Models
         {
             this.SkyScrapers = new HashSet<SkyScraper>();
         }
+        public Developer(string name, string description)
+        {
+            this.Name = name;
+            this.Description = description;
+        }
     
         public int IdDeveloper { get; set; }
         public string Name { get; set; }

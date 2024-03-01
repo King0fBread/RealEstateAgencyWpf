@@ -29,13 +29,13 @@ namespace RealEstateAgency.Views
             developerDataCanvas.DataContext = _selectedDeveloper;
         }
 
-        private void backButton_Click(object sender, RoutedEventArgs e)
+        private void BackButton_Click(object sender, RoutedEventArgs e)
         {
             Manager.mainFrame.Navigate(new Developers());
             Manager.mainFrame.RemoveBackEntry();
         }
 
-        private void redactSubmitButton_Click(object sender, RoutedEventArgs e)
+        private void RedactSubmitButton_Click(object sender, RoutedEventArgs e)
         {
             if(CheckGameInfoValidity(developerName.Text, developerDescription.Text))
             {

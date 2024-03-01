@@ -34,5 +34,9 @@
                 </DataGridTemplateColumn>
             </DataGrid.Columns>
         </DataGrid>
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button Width="100" Height="30" Content="Добавить" Name="AddDeveloper" Click="AddDeveloper_Click"></Button>
+            <Button Width="100" Height="30" Content="Удалить" Name="DeleteDeveloper" Click="DeleteDeveloper_Click"></Button>
+        </StackPanel>
     </StackPanel>
 </Page>
