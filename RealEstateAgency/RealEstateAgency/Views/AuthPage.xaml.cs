@@ -28,14 +28,20 @@ namespace RealEstateAgency.Views
 
         private void LoginButton_Click(object sender, RoutedEventArgs e)
         {
-            var user = Employee.Login(txtLogin.Text, txtPassword.Text);
-            if (user == null)
-            {
-                MessageBox.Show("Такого пользователя не существует");
-                return;
-            }
-            Manager.currentUser = user;
+            CheckIfuUserExists(txtLogin.Text, txtPassword.Text);
             Manager.mainFrame.Navigate(new MainPage());
+        }
+        public static bool CheckIfuUserExists(string userName, string userPassword)
+        {
+            var user = Employee.Login(userName, userPassword);
+            if(user != null)
+            {
+                Manager.currentUser = user;
+                return true;
+            }
+
+            MessageBox.Show("Такого пользователя не существует");
+            return false;
         }
 
         private void ClickableTipImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)

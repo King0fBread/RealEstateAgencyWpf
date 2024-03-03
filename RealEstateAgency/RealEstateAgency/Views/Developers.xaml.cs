@@ -53,7 +53,15 @@ namespace RealEstateAgency.Views
 
         private void DeleteDeveloper_Click(object sender, RoutedEventArgs e)
         {
+            var developersToDelete = developersDG.SelectedItems.Cast<Developer>().ToList();
+            if(MessageBox.Show("Подтвердите удаление", "Удаление", MessageBoxButton.YesNo) == MessageBoxResult.Yes)
+            {
+                Model.GetContext().Developers.RemoveRange(developersToDelete);
+                Model.GetContext().SaveChanges();
+                MessageBox.Show("Успешно!");
 
+                developersDG.ItemsSource = Model.GetContext().Developers.ToList();
+            }
         }
     }
 }
